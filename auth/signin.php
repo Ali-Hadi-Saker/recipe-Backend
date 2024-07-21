@@ -20,6 +20,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
      }else{
         if(password_verify($pass, $hashedPass)){
+            session_start();
+            $_SESSION['user_id'] = $id;
             $response['status'] = 'authenticated';
             $response['message'] = 'Logged in';
 
