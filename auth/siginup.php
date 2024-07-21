@@ -3,12 +3,12 @@
 
 require '../confg.php';
 
-if($_SERVER['METHOD_REQUEST'] == 'POST'){
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-    $name = $_POST('name');
-    $username = $_POST('username');
-    $email = $_POST('email');
-    $pass = $_POST('password');
+    $name = $_POST['name'];
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $pass = $_POST['password'];
 
 
     $check = $conn->prepare('select * from users where username=? or email=?');
