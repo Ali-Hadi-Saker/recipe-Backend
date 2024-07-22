@@ -4,10 +4,14 @@ require '../confg.php';
 
 if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
-    $recipe_id = $_GET['name'];
+    $recipe = isset($_GET['name'])? $_GET['name'] : '';
 
-    $stmt = $conn->prepare('select * from recipes where name=?');
-    $stmt->bind_param('s', $recipe_id);
+    if(!$recipe){
+        $stmt = $conn->prepare('select * from recipes');
+    }else{
+        $stmt = $conn->prepare('select * from recipes where name=?');
+        $stmt->bind_param('s', $recipe);
+    }    
     $stmt->execute();
 
     $result = $stmt->get_result();
