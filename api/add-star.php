@@ -13,7 +13,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
     $stmt->bind_param('ii', $user_id, $recipe_id);
     $stmt->execute();
 
-    echo json_encode(['message' => 'star added successfully']);
+    echo json_encode(['message' => 'star added successfully', 'status'=>'success']);
 
 }else{
     echo json_encode(['error' => 'wrong method']);
